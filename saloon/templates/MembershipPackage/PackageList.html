@@ -1,0 +1,56 @@
+{% extends 'master.html' %}
+{%block 'content'%}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Membership Package </h5>
+
+              <!-- Default Table -->
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Discount</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Duration</th>
+                    <th scope="col">Options</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for package in packages%} <tr>
+                      <td>{{package.mp_id}}</td>
+                      <td>{{package.mp_name}}</td> 
+                      <td>{{package.mp_discount}}</td>
+                      <td>{{package.mp_amount}}</td>
+                      <td>{{package.mp_duration}}</td>
+                      <td><a href="/mempackagedel/{{package.mp_id}}/">Delete</a> <a href="/mempackageedit/{{package.mp_id}}/">Edit</a></td> 
+
+                      </tr>
+                  {%endfor%}
+                </tbody>
+              </table>
+              <div >
+                <button type="submit" ><a href="/mempackadd/">Add</a></button>
+              </div>
+              <!-- End Default Table Example -->
+            </div>
+          </div>
+
+          
+        </div>
+
+        
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+{%endblock%}

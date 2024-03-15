@@ -1,0 +1,106 @@
+{% extends 'master.html' %}
+{%block 'content'%}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Edit Form</h1>
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Product Edit Form</h5>
+
+              <!-- Horizontal Form -->
+              <form action="/productupdate/{{prod.p_id}}/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row mb-3">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Product Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="pname"  value="{{prod.p_name}}" id="inputText" required>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Description</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="pdes"  value="{{prod.p_description}}" id="inputText" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Price</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="price"  value="{{prod.p_price}}" id="inputText" required>
+                  </div>
+              </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Image</label>
+                    <div class="col-sm-10">
+                      <input type="file" class="form-control" name="pimage" id="inputText">
+                    </div>
+                </div> 
+                <div class="row mb-3">
+               <img src="{{prod.p_image}}" height="200px">
+               <input type="hidden" name="oldimage" value="{{prod.p_image}}">
+              </div> 
+              <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Select Brand</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="bid" required>
+                            {%for brand in brands %}
+                            <option value="{{brand.b_id}}">{{brand.b_name}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Select Category</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="cid" required>
+                            {%for category in categories %}
+                                <option value="{{category.c_id}}">{{category.c_name}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form><!-- End Horizontal Form -->
+
+            </div>
+          </div>
+
+        </div>
+
+        
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+  {%endblock%}
+  <!-- <html>
+    <head>
+        <title>product Edit</title>
+    </head>
+    <body>
+        <form action="/productupdate/{{prod.p_id}}/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            Enter description:<input type="text" name="pdes"  value="{{prod.p_description}}"><br>
+            Enter image:<input type="file" name="pimage"  value="{{prod.p_image}}"><br>
+            Brand:<select name="bid">
+                {%for brand in brands %}
+                <option value="{{brand.b_id}}">{{brand.b_name}}</option>
+                {%endfor%}
+            </select><br>
+            Category:<select name="cid">
+                {%for category in categories %}
+                <option value="{{category.c_id}}">{{category.c_name}}</option>
+                {%endfor%}
+            </select>
+            <input type="submit" value="Add"><br>
+            
+        </form>
+    </body>
+</html> -->

@@ -1,0 +1,74 @@
+{% extends 'master.html' %}
+{%block 'content'%}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Add Form</h1>
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Sales Order Form</h5>
+
+              <!-- Horizontal Form -->
+              <form action="/salesordersave/" method="post">
+                {% csrf_token %}
+                <div class="row mb-3">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Sales Order date</label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" name="sodate" id="inputText" required>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Sales Order total</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="sototal" id="inputText" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Sales Order Discount</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="sodisc" id="inputText" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Sales Order Amount</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="soamount" id="inputText" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Sales Order Status</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="sostatus" id="inputText" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Select Cuastomer</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="cid" required>
+                            {% for customer in customers%}
+                            <option value="{{customer.c_id}}">{{customer.c_name}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form><!-- End Horizontal Form -->
+
+            </div>
+          </div>
+
+        </div>
+
+        
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+  {%endblock%}

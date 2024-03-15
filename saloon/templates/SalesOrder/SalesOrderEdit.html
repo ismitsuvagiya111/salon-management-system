@@ -1,0 +1,99 @@
+{% extends 'master.html' %}
+{%block 'content'%}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Edit Form</h1>
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Sales Order Edit Form</h5>
+
+              <!-- Horizontal Form -->
+              <form action="/soupdate/{{so.so_id}}/" method="post">
+                {% csrf_token %}
+                <div class="row mb-3">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Sales Order date</label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" name="sodate" value="{{so.so_date}}" id="inputText" required>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Sales Order total</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="sototal" value="{{so.so_total}}" id="inputText" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Sales Order Discount</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="sodisc" value="{{so.so_discount}}" id="inputText" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Sales Order Amount</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="soamount"value="{{so.so_amount}}" id="inputText" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Sales Order Status</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="sostatus"  value="{{so.so_status}}" id="inputText" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Select Cuastomer</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="cid" required>
+                            {% for customer in customers%}
+                            <option value="{{customer.c_id}}">{{customer.c_name}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form><!-- End Horizontal Form -->
+
+            </div>
+          </div>
+
+        </div>
+
+        
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+  {%endblock%}
+<html>
+    <head>
+        <title>SalesOrder update</title>
+    </head>
+    <body>
+        <form action="/soupdate/{{so.so_id}}/" method="post">
+            {% csrf_token %}
+            Enter SalesOrder date<input type="text" name="sodate" value="{{so.so_date}}"><br>
+            Enter SalesOrder total:<input type="text" name="sototal" value="{{so.so_total}}"><br>
+            Enter SalesOrder discount:<input type="text" name="sodisc" value="{{so.so_discount}}"><br>
+            Enter SalesOrder amount:<input type="text" name="soamount" value="{{so.so_amount}}"><br>
+            Enter SalesOrder status:<input type="text" name="sostatus" value="{{so.so_status}}"><br>
+
+            customer name :<select name="cid">
+                {% for customer in customers%}
+                <option value="{{customer.c_id}}">{{customer.c_name}}</option>
+                {%endfor%}
+            </select><br>
+            
+            
+            <input type="submit" value="Add"><br>
+            
+        </form>
+    </body>
+</html>

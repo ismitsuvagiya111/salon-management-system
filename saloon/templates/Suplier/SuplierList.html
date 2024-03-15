@@ -1,0 +1,55 @@
+{% extends 'master.html' %}
+{%block 'content'%}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Supplier </h5>
+
+              <!-- Default Table -->
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>     
+                    <th scope="col">Contact</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sup in sups%}<tr>
+                      <td>{{sup.sup_id}}</td>
+                      <td>{{sup.sup_name}}</td> 
+                      <td>{{sup.sup_address}}</td>
+                      <td>{{sup.sup_contact}}</td>
+                      <td>{{sup.sup_email}}</td> 
+                      <td><a href="/supdel/{{sup.sup_id}}/">Delete</a> <a href="/suppedit/{{sup.sup_id}}/">Edit</a>
+                      </tr>
+                  {%endfor%}
+                </tbody>
+              </table>
+              <div >
+                <button type="submit" ><a href="/supplieradd/">Add</a></button>
+              </div>
+              <!-- End Default Table Example -->
+            </div>
+          </div>
+
+          
+        </div>
+
+        
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+{%endblock%}

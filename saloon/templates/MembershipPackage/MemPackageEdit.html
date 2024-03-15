@@ -1,0 +1,78 @@
+{% extends 'master.html' %}
+{%block 'content'%}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Edit Form</h1>
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Membeship Package Edit Form</h5>
+
+              <!-- Horizontal Form -->
+              <form action="/mempackupdate/{{package.mp_id}}/" method="post">
+                {% csrf_token %}
+                <div class="row mb-3">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Package Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="mpname" value="{{package.mp_name}}" id="inputText" required>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Discount</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" name="mpdisc" value="{{package.mp_discount}}" id="inputText" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Amount</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" name="mpamount" value="{{package.mp_amount}}" id="inputText" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Duration</label>
+                    <div class="col-sm-10">
+                      <input type="datetime-local" class="form-control" name="mpdu" value="{{package.mp_duration}}" id="inputText" required>
+                    </div>
+                  </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form><!-- End Horizontal Form -->
+
+            </div>
+          </div>
+
+        </div>
+
+        
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+  {%endblock%}
+
+
+
+
+<html>
+    <head>
+        <title>MembershipPackage</title>
+    </head>
+    <body>
+        <form action="/mempackupdate/{{package.mp_id}}/" method="post">
+            {% csrf_token %}
+            Enter Name:<input type="text" name="mpname" value="{{package.mp_name}}"><br>
+            Enter Discount:<input type="text" name="mpdisc" value="{{package.mp_discount}}"><br>
+            Enter Amount:<input type="text" name="mpamount" value="{{package.mp_amount}}"><br>
+            Enter Duration:<input type="datetime-local" name="mpdu" value="{{package.mp_duration}}"><br>
+            <input type="submit" value="Add"><br>
+    
+        </form>
+    </body>
+</html>

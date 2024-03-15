@@ -1,0 +1,108 @@
+
+{% extends 'master.html' %}
+{%block 'content'%}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Edit Form</h1>
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Customer Edit Form</h5>
+
+              <!-- Horizontal Form -->
+              <form action="/customerupdate/{{customer.c_id}}/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row mb-3">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="cname" value="{{customer.c_name}}" id="inputText" required>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Age</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="cage" value="{{customer.c_age}}" id="inputText" required>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Contact</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="ccontect" value="{{customer.c_contact}}" id="inputText" required>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Gender</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="cgen" value="{{customer.c_gender}}" id="inputText" required>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Email Id</label>
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control" name="cemail" value="{{customer.c_email}}" id="inputText" required>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Password</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" name="cpass" value="{{customer.c_password}}" id="inputText" required>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Address</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="caddress" value="{{customer.c_address}}" id="inputText" required>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Image</label>
+                    <div class="col-sm-10">
+                      <input type="file" class="form-control" name="cimage" id="inputText">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                  <img src="{{customer.c_image}}" height="500px" width="100px">
+                  <input type="hidden" name="oldimage" value="{{customer.c_image}}">
+                 </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form><!-- End Horizontal Form -->
+
+            </div>
+          </div>
+
+        </div>
+
+        
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+  {%endblock%}
+
+<html>
+    <head>
+        <title> customer</title>
+    </head>
+    <body>
+        <form action="/customerupdate/{{customer.c_id}}/" method="post">
+            {% csrf_token %}
+            Enter Name:<input type="text" name="cname" value="{{customer.c_name}}"><br>
+            Enter age:<input type="text" name="cage" value="{{customer.c_age}}"><br>
+            Enter contect:<input type="text" name="ccontect" value="{{customer.c_contact}}"><br>
+            Enter gender:<input type="text" name="cgen" value="{{customer.c_gender}}"><br>
+            Enter email:<input type="text" name="cemail" value="{{customer.c_email}}"><br>
+            Enter password:<input type="text" name="cpass" value="{{customer.c_password}}"><br>
+            Enter address:<input type="text" name="caddress" value="{{customer.c_address}}"><br>
+
+            <input type="submit" value="Add"><br>
+            
+        </form>
+    </body>
+</html>

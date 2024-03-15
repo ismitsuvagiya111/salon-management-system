@@ -1,0 +1,82 @@
+{% extends 'master.html' %}
+{%block 'content'%}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Add Form</h1>
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Employee Form</h5>
+
+              <!-- Horizontal Form -->
+              <form action="/empsave/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row mb-3">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="ename" id="inputText" required>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Gender</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="egen" id="inputText" required>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Contact</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" name="econtect" id="inputText" required>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Email ID</label>
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control" name="email" id="inputText" required>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Password</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" name="epass" id="inputText" required>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Address</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="eaddress" id="inputText" required>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Salary</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" name="esalary" id="inputText" required>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Profile Photo</label>
+                    <div class="col-sm-10">
+                      <input type="file" class="form-control" name="eimage" id="inputText" required>
+                    </div>
+                  </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form><!-- End Horizontal Form -->
+
+            </div>
+          </div>
+
+        </div>
+
+        
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+  {%endblock%}

@@ -1,0 +1,57 @@
+{% extends 'master.html' %}
+{%block 'content'%}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Employee Salary </h5>
+
+              <!-- Default Table -->
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Salary Month</th>
+                    <th scope="col">Salary Year</th>
+                    <th scope="col">Salary Date</th>
+                    <th scope="col">Options</th>
+                
+                </tr>
+                </thead>
+                <tbody>
+                    {% for salarys in profit%} <tr>
+                      <td>{{salarys.es_id}}</td>
+                      <td>{{salarys.e}}</td> 
+                      <td>{{salarys.es_month}}</td>
+                      <td>{{salarys.es_year}}</td>
+                      <td>{{salarys.es_date}}</td> 
+                      <td><a href="/emplsalarydel/{{salarys.es_id}}/">Delete</a> <a href="/empsalaryedit/{{salarys.es_id}}/">Edit</a></td> 
+                      </tr>
+                  {%endfor%}
+    
+                </tbody>
+              </table>
+              <div >
+                <button type="submit" ><a href="/empsalaryadd/">Add</a></button>
+              </div>
+              <!-- End Default Table Example -->
+            </div>
+          </div>
+
+          
+        </div>
+
+        
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+{%endblock%}

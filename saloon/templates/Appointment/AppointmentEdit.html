@@ -1,0 +1,118 @@
+{% extends 'master.html' %}
+{%block 'content'%}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Edit Form</h1>
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Appointment Form</h5>
+
+              <!-- Horizontal Form -->
+              <form action="/appoupdate/{{appointment.a_id}}/" method="post">
+                {% csrf_token %}
+                <div class="row mb-3">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Date </label>
+                  <div class="col-sm-10">
+                    <input type="datetime-local" class="form-control" name="adatetime" value="{{appointment.a_datetime|date:"Y-m-d H:i"}}" id="inputText" required>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Rate </label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" name="arate" value="{{appointment.a_rate}}" id="inputText" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Discount </label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" name="adisc" value="{{appointment.a_discount}}" id="inputText" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Status </label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="astat" value="{{appointment.a_status}}" id="inputText" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Customer Name</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="cid" required>
+                            {% for customer in customers%}
+                            <option value="{{customer.c_id}}">{{customer.c_name}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Service Name</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="sid" required>
+                            {% for service in services%}     
+                                <option value="{{service.s_id}}">{{service.s_name}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">package Name</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="pckid" required>
+                            {% for pack in packs%}     
+                                <option value="{{pack.pkg_id}}">{{pack.pkg_name}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form><!-- End Horizontal Form -->
+
+            </div>
+          </div>
+
+        </div>
+
+        
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+  {%endblock%}
+<html>
+    <head>
+        <title>Appointment</title>
+    </head>
+    <body>
+        <form action="/appoupdate/{{appointment.a_id}}/" method="post">
+            {% csrf_token %}
+            Enter datetime:<input type="datetime-local" name="adatetime" value="{{appointment.a_datetime|date:"Y-m-d H:i"}}"><br>
+            Enter rate:<input type="text" name="arate" value="{{appointment.a_rate}}"><br>
+            Enter discount:<input type="text" name="adisc" value="{{appointment.a_discount}}"><br>
+            Enter status:<input type="text" name="astat" value="{{appointment.a_status}}"><br>
+            customer:<select name="cid" >
+                {% for customer in customers%}
+                <option value="{{customer.c_id}}">{{customer.c_name}}</option>
+                {%endfor%}
+            </select><br>
+            service:<select name="sid">
+                {% for service in services%}     
+                <option value="{{service.s_id}}">{{service.s_name}}</option>
+                {%endfor%}
+            </select><br>
+            package:<select name="pckid">
+                {% for pack in packs%}     
+                <option value="{{pack.pkg_id}}">{{pack.pkg_name}}</option>
+                {%endfor%}
+            <input type="submit" value="Add"><br>
+            
+        </form>
+    </body>
+</html>
